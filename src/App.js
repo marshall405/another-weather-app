@@ -16,7 +16,8 @@ class App extends Component {
       errorMessage: '',
       sunrise: '',
       sunset: '',
-      sky: ''
+      sky: '',
+      icon: ''
     }
     this.key = process.env.REACT_APP_WEATHER_API_KEY;
 
@@ -37,13 +38,15 @@ class App extends Component {
         const sunset = this.convertToTime(res.sys.sunset);
         const city = res.name;
         const sky = res.weather[0].main;
+        const icon = res.weather[0].icon;
         this.setState({
           city: city,
           temp: temp,
           error: false,
           sunrise: sunrise,
           sunset: sunset,
-          sky: sky
+          sky: sky,
+          icon: icon
         })
       } else {
         this.setState({error: true, errorMessage: res.message})
@@ -65,7 +68,7 @@ class App extends Component {
     return (
       <div className="App">
         <Input setZipcode={this.setZipcode}/>
-        <ShowTemp temp={this.state.temp} city={this.state.city} error={this.state.error} errorMessage={this.state.errorMessage} sunrise={this.state.sunrise} sunset={this.state.sunset} sky={this.state.sky}/>
+        <ShowTemp temp={this.state.temp} city={this.state.city} error={this.state.error} errorMessage={this.state.errorMessage} sunrise={this.state.sunrise} sunset={this.state.sunset} sky={this.state.sky} icon={this.state.icon}/>
       </div>
     );
   }
