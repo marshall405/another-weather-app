@@ -68,7 +68,15 @@ class App extends Component {
     return (
       <div className="App">
         <Input setZipcode={this.setZipcode}/>
-        <ShowTemp temp={this.state.temp} city={this.state.city} error={this.state.error} errorMessage={this.state.errorMessage} sunrise={this.state.sunrise} sunset={this.state.sunset} sky={this.state.sky} icon={this.state.icon}/>
+        <ShowTemp 
+          temp={this.state.temp} 
+          city={this.state.city} 
+          error={this.state.error} 
+          errorMessage={this.state.errorMessage} 
+          sunrise={this.state.sunrise} 
+          sunset={this.state.sunset} 
+          sky={this.state.sky} 
+          icon={this.state.icon}/>
       </div>
     );
   }
