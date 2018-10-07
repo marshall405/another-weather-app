@@ -18,7 +18,7 @@ export const ShowTemp = (props) => {
                 <h1> Weather </h1>
                 <h2> {props.city} </h2>
                 <h4> {props.sky} </h4>
-                <img src={`http://openweathermap.org/img/w/${props.icon}.png`} />
+                <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt={`image of ${props.sky} skies`} />
                 <h3> Temp {props.temp}&#8457; </h3>
                 <div style={{display:'flex', justifyContent:'space-around', alignItems:'center' }}>
                     <p> Sunrise {props.sunrise} </p>
