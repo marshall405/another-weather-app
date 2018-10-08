@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Time } from './Time';
 import {colorStyles} from './styles/facebookStyles';
 
 const divStyles = {
@@ -9,21 +9,27 @@ const divStyles = {
 const errorMessageStyle = {
     color: colorStyles.red
 }
-
+const flexStyle = {
+    display:'flex', 
+    justifyContent:'space-around', 
+    alignItems:'center' 
+}
 
 export const ShowTemp = (props) => {
     if(!props.error){
         return (
             <div style={divStyles}>
-                <h1> Weather </h1>
+                <Time /> 
                 <h2> {props.city} </h2>
-                <h4> {props.sky} </h4>
-                <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt={`image of ${props.sky} skies`} />
-                <h3> Temp {props.temp}&#8457; </h3>
-                <div style={{display:'flex', justifyContent:'space-around', alignItems:'center' }}>
-                    <p> Sunrise {props.sunrise} </p>
+                <h1> {props.temp}&#8457; </h1>
+
+                <div style={flexStyle}>  
+                    <p> Sunrise {props.sunrise} </p>  
+                    <h2> {props.date} </h2>
                     <p> Sunset {props.sunset} </p>
                 </div>
+                <h4> {props.sky} </h4>
+                <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt={`${props.sky} skies`} />
             </div>
         )
     } else {
