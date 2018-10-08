@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { ShowTemp } from './ShowTemp';
 import { Input } from './Input';
+
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'Weather',
+      date: '',
       temp: 0,
       city: '',
       state: '',
@@ -22,6 +23,7 @@ class App extends Component {
     this.key = process.env.REACT_APP_WEATHER_API_KEY;
 
     this.setZipcode = this.setZipcode.bind(this);
+    this.getDate = this.getDate.bind(this);
     this.fetchWeather = this.fetchWeather.bind(this);
   }
   componentDidMount() {
@@ -33,6 +35,7 @@ class App extends Component {
     .then( res => {
       console.log(res)
       if(res.coord){
+        const date = this.getDate();
         const temp = this.kelvinToFahrenheit(res.main.temp);
         const sunrise = this.convertToTime(res.sys.sunrise);
         const sunset = this.convertToTime(res.sys.sunset);
@@ -40,6 +43,7 @@ class App extends Component {
         const sky = res.weather[0].main;
         const icon = res.weather[0].icon;
         this.setState({
+          date: date,
           city: city,
           temp: temp,
           error: false,
@@ -64,11 +68,17 @@ class App extends Component {
     const temp = Math.floor((k * (9/5)) - 459.67);
     return temp;
   }
+  getDate() {
+    const date = new Date();
+    return date.toLocaleDateString();
+  }
+
   render() {
     return (
       <div className="App">
         <Input setZipcode={this.setZipcode}/>
         <ShowTemp 
+          date={this.state.date}
           temp={this.state.temp} 
           city={this.state.city} 
           error={this.state.error} 
