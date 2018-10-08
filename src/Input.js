@@ -1,5 +1,11 @@
 import React from 'react';
 
+const inputStyle = {
+    width: '100%',
+    fontSize: 18,
+    textAlign: 'center'
+}
+
 export class Input extends React.Component {
     constructor(props) {
         super(props);
@@ -26,8 +32,8 @@ export class Input extends React.Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type='text' maxLength='5' placeholder='enter zipcode' onChange={this.handleUserInput} />
+            <form style={{marginTop:20}} onSubmit={this.handleSubmit}>
+                <input style={inputStyle} type='text' maxLength='5' placeholder='enter zipcode' onChange={this.handleUserInput} />
             </form>
         )
     }
