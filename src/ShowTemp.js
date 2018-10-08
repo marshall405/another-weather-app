@@ -4,7 +4,6 @@ import {colorStyles} from './styles/facebookStyles';
 
 const divStyles = {
     color: colorStyles.darkBlue,
-
 }
 const errorMessageStyle = {
     color: colorStyles.red
@@ -14,7 +13,12 @@ const flexStyle = {
     justifyContent:'space-around', 
     alignItems:'center' 
 }
-
+const footerStyle = {
+    position: 'absolute', 
+    bottom: 20,left:0, 
+    width: '100%', 
+    textAlign: 'center'
+}
 export const ShowTemp = (props) => {
     if(!props.error){
         return (
@@ -28,8 +32,10 @@ export const ShowTemp = (props) => {
                     <h2> {props.date} </h2>
                     <p> Sunset {props.sunset} </p>
                 </div>
-                <h4> {props.sky} </h4>
+                <h3> {props.sky} </h3>
                 <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt={`${props.sky} skies`} />
+
+                <footer style={footerStyle}> Weather App Made Possible By <a href='https://openweathermap.org/'>openweathermap</a></footer>
             </div>
         )
     } else {
