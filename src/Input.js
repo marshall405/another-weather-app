@@ -1,10 +1,12 @@
 import React from 'react';
 
 const inputStyle = {
-    width: '100%',
+    margin: '0 auto',
+    width: '70%',
     fontSize: 18,
     textAlign: 'center',
-    borderRadius: 10
+    borderRadius: 10,
+    height: 30
 }
 
 export class Input extends React.Component {
@@ -32,7 +34,7 @@ export class Input extends React.Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form style={{textAlign:'center'}}onSubmit={this.handleSubmit}>
                 <input style={inputStyle} type='text' maxLength='5' placeholder='enter zipcode' onChange={this.handleUserInput} value={this.state.zip} />
             </form>
         )
